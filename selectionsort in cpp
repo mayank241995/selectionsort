@@ -1,0 +1,61 @@
+#include<iostream>
+
+using namespace std;
+
+void swap (int *x, int *y){
+    int temp=*x;
+    *x=*y;
+    *y=temp;
+}
+
+void selectionsort(int arr[],int n)
+{
+    //we need to find the min_index
+    int i ,j, min_index;
+    
+    for(i=0;i<n-1;i++)
+    {
+        //set min_index=i to know the position
+        
+        min_index=i;
+        
+        for(j=i+1;j<n;j++)
+        {
+            if(arr[j]<arr[min_index])
+            {
+                min_index=j;
+                
+                swap(&arr[min_index],&arr[i]);
+                
+            }
+        }
+    }
+    
+}
+
+
+void printarray(int arr[],int size)
+{
+    int i;
+    for(i=0;i<size;i++)
+    {
+        std::cout << arr[i]<<" " << std::endl;
+    }
+}
+
+int main()
+{
+    int arr[] = {64,65,12,7,3};
+    int n = sizeof(arr)/sizeof(arr[0]);//size of arr is 5*4=20 and the size of the arr[0] is 4 sp int n = 5
+    
+    selectionsort(arr,n);
+    
+    std::cout << "Sorted array  is" << std::endl;
+    
+    printarray(arr,n);
+    
+    return 0;
+}
+
+
+
